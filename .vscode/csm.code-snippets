@@ -1,0 +1,10 @@
+{
+	"Import CSS Module": {
+	  "prefix": "csm",
+	  "body": [
+		"import styles from './${1:${TM_FILENAME_BASE}}.module.css';"
+	  ],
+	  "description": "Auto-import CSS Module for current component"
+	}
+  }
+  

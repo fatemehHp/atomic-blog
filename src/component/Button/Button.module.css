@@ -1,0 +1,46 @@
+/* استایل عمومی برای دکمه‌ها */
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05); /* بزرگ‌تر شدن دکمه هنگام hover */
+}
+
+.btn:active {
+  transform: scale(0.95); /* کوچک‌تر شدن دکمه هنگام کلیک */
+}
+/* دکمه افزودن */
+.addButton {
+  background-color: #536493;
+  color: white;
+}
+
+.addButton:hover {
+  background-color: #88c273; /* رنگ تغییر می‌کند هنگام hover */
+}
+
+/* دکمه حذف */
+.removeButton {
+  background-color: #d9534f;
+  color: white;
+}
+
+.removeButton:hover {
+  background-color: #c9302c; /* رنگ تغییر می‌کند هنگام hover */
+}
+
+/* دکمه صفحه بعدی */
+.nextPageButton {
+  background-color: #5bc0de;
+  color: white;
+}
+
+.nextPageButton:hover {
+  background-color: #31b0d5; /* رنگ تغییر می‌کند هنگام hover */
+}

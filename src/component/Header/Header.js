@@ -1,10 +1,13 @@
-import React from 'react'
-import styles from "./Header.module.css"
-
-const Header = () => {
+import React from "react";
+import styles from "./Header.module.css";
+import Results from "../Results/Results";
+const Header = ({ children }) => {
   return (
-    <div>Header</div>
-  )
-}
+    <div className={styles.header}>
+      {children}
 
-export default Header
+    </div>
+  );
+};
+
+export default Header;

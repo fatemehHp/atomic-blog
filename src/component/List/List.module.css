@@ -1,0 +1,17 @@
+.postContainer{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+  
+  /* Optional: Empty State */
+  .emptyMessage {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 2rem;
+  }
+  

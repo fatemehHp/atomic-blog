@@ -1,0 +1,30 @@
+
+.postCard {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    width: 400px;
+    height: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .postCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.75rem;
+  }
+  
+  .text {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+  }
