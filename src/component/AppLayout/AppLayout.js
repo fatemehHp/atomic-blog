@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useRef, useState } from "react";
 import styles from "./AppLayout.module.css";
 import Header from "../Header/Header";
 import Button from "../Button/Button";
@@ -7,29 +7,36 @@ import Results from "../Results/Results";
 import Logo from "../Logo/Logo";
 import FormAddPost from "../FormAddPost/FormAddPost";
 import List from "../List/List";
-import { faker } from "@faker-js/faker";
-// create random post function
-function createPosts() {
-  return {
-    title: `${faker.hacker.adjective()} ${faker.hacker.noun()}`,
-    body: faker.hacker.phrase(),
-  };
-}
+import usePosts from "../../Hooks/usePosts";
+
 // create context
 export const DataContext = createContext();
 // component
 const AppLayout = () => {
-  const [posts, setPosts] = useState(() =>
-    Array.from({ length: 30 }, () => createPosts())
-  );
-  function addToPOst(postTitle, postBody) {
-    if(!postTitle || !postBody){
-      return
-    }
-    setPosts([...posts, { title: postTitle, body: postBody }]);
-  }
+  const {
+    posts,
+    addToPost,
+    inputEl,
+    inputBody,
+    addToTitle,
+    addToPostBody,
+    postTitle,
+    postBody,
+  } = usePosts();
+
   return (
-    <DataContext.Provider value={{ posts, addToPOst }}>
+    <DataContext.Provider
+      value={{
+        posts,
+        addToPost,
+        inputEl,
+        inputBody,
+        addToTitle,
+        addToPostBody,
+        postTitle,
+        postBody,
+      }}
+    >
       <div className={styles.container}>
         <Header>
           <Button type="removeButton">Remove All Posts</Button>

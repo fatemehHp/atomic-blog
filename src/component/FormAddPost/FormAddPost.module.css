@@ -22,3 +22,8 @@
   .textarea {
    height: 50px;
   }
+  .error{
+    outline: 2px solid #ffa94d;
+    border-radius: 2px;
+    
+  }
