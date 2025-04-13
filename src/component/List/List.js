@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import styles from './List.module.css';
 import Posts from "../Posts/Posts";
-import { DataContext } from "../AppLayout/AppLayout";
+import { PostContext } from "../../context/PostContext";
 
 export default function List() {
-  const{searchedPosts}=useContext(DataContext)
+  const{searchedPosts}=useContext(PostContext)
 
 
 

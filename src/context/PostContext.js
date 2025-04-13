@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { createContext, useRef, useState } from "react";
 import { faker } from "@faker-js/faker";
 
 // create random post function
@@ -8,8 +8,9 @@ function createPosts() {
     body: faker.hacker.phrase(),
   };
 }
+const PostContext = createContext();
 // insert/search/delete/focus ,....  hook
-const usePosts = () => {
+function Postprovider({ children }) {
   // ref
   const inputEl = useRef(null);
   const inputBody = useRef(null);
@@ -41,13 +42,13 @@ const usePosts = () => {
       inputBody.current.focus();
       return;
     }
-      setPosts((posts) => [{ title: postTitle, body: postBody }, ...posts]);
-      setPostTitle("");
-      setPostBody("");
+    setPosts((posts) => [{ title: postTitle, body: postBody }, ...posts]);
+    setPostTitle("");
+    setPostBody("");
   }
   // delete all posts function
-  function deletePost(){
-    setPosts([])
+  function deletePost() {
+    setPosts([]);
   }
   // add searchquery to state
   function addToSearchQuery(searchtext) {
@@ -62,20 +63,25 @@ const usePosts = () => {
             .includes(searchInputPost.toLowerCase())
         )
       : posts;
+  return(
+  <PostContext.Provider
+    value={{
+      searchedPosts,
+      addToPost,
+      inputEl,
+      inputBody,
+      addToTitle,
+      addToPostBody,
+      postTitle,
+      postBody,
+      addToSearchQuery,
+      searchInputPost,
+      deletePost,
+    }}
+  >
+    {children}
+  </PostContext.Provider>
+  )
+}
 
-  return {
-    searchedPosts,
-    addToPost,
-    inputEl,
-    inputBody,
-    addToTitle,
-    addToPostBody,
-    postTitle,
-    postBody,
-    addToSearchQuery,
-    searchInputPost,
-    deletePost
-  };
-};
-
-export default usePosts;
+export  { Postprovider, PostContext };

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import styles from "./FormAddPost.module.css";
 import Button from "../Button/Button";
-import { DataContext } from "../AppLayout/AppLayout";
+import { PostContext } from "../../context/PostContext";
 const FormAddPost = () => {
   const {
     addToPost,
@@ -11,7 +11,7 @@ const FormAddPost = () => {
     addToTitle,
     addToPostBody,
     postTitle,
-  } = useContext(DataContext);
+  } = useContext(PostContext);
 
   return (
     <div className={styles.container}>
