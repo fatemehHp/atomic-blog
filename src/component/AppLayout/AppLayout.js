@@ -14,7 +14,7 @@ export const DataContext = createContext();
 // component
 const AppLayout = () => {
   const {
-    posts,
+    searchedPosts,
     addToPost,
     inputEl,
     inputBody,
@@ -22,12 +22,14 @@ const AppLayout = () => {
     addToPostBody,
     postTitle,
     postBody,
+    addToSearchQuery,
+    searchInputPost
   } = usePosts();
 
   return (
     <DataContext.Provider
       value={{
-        posts,
+        searchedPosts,
         addToPost,
         inputEl,
         inputBody,
@@ -35,6 +37,8 @@ const AppLayout = () => {
         addToPostBody,
         postTitle,
         postBody,
+        addToSearchQuery,
+        searchInputPost
       }}
     >
       <div className={styles.container}>

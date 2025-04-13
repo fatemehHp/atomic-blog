@@ -1,7 +1,9 @@
-import React from 'react'
-import styles from './Results.module.css';
+import React, { useContext } from "react";
+import styles from "./Results.module.css";
+import { DataContext } from "../AppLayout/AppLayout";
 export default function Results() {
+  const { searchedPosts } = useContext(DataContext);
   return (
-      <p className={styles.searchResult}>Search results: 5 posts found</p>
-  )
+    <p className={styles.searchResult}>Search results:{searchedPosts.length}</p>
+  );
 }

@@ -4,7 +4,7 @@ import Posts from "../Posts/Posts";
 import { DataContext } from "../AppLayout/AppLayout";
 
 export default function List() {
-  const{posts}=useContext(DataContext)
+  const{searchedPosts}=useContext(DataContext)
 
 
 
@@ -13,7 +13,7 @@ export default function List() {
   return (
     <div className={styles.postContainer}>
       {
-        posts.map((posts)=>{
+        searchedPosts.map((posts)=>{
           return <Posts posts={posts} key={posts.title} />
         })
       }

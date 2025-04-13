@@ -14,11 +14,14 @@ const usePosts = () => {
   const inputBody = useRef(null);
   // state
   const [posts, setPosts] = useState(() =>
-    Array.from({ length: 30 }, () => createPosts())
+    Array.from({ length: 10 }, () => createPosts())
   );
   //   add forms state
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
+  //search post
+  const [searchInputPost, setSearchInputPost] = useState("");
+
   //   addToTitle
   function addToTitle(e) {
     setPostTitle(e.target.value);
@@ -37,12 +40,27 @@ const usePosts = () => {
       inputBody.current.focus();
       return;
     }
-    setPosts([...posts, { title: postTitle, body: postBody }]);
-    setPostTitle("")
-    setPostBody("")
+
+      setPosts((posts) => [{ title: postTitle, body: postBody }, ...posts]);
+      setPostTitle("");
+      setPostBody("");
   }
+  // add searchquery
+  function addToSearchQuery(searchtext) {
+    setSearchInputPost(searchtext);
+  }
+  // searchPost
+  const searchedPosts =
+    searchInputPost.length > 0
+      ? posts.filter((post) =>
+          `${post.title} ${post.body}`
+            .toLowerCase()
+            .includes(searchInputPost.toLowerCase())
+        )
+      : posts;
+
   return {
-    posts,
+    searchedPosts,
     addToPost,
     inputEl,
     inputBody,
@@ -50,6 +68,8 @@ const usePosts = () => {
     addToPostBody,
     postTitle,
     postBody,
+    addToSearchQuery,
+    searchInputPost,
   };
 };
 
