@@ -23,7 +23,8 @@ const AppLayout = () => {
     postTitle,
     postBody,
     addToSearchQuery,
-    searchInputPost
+    searchInputPost,
+    deletePost
   } = usePosts();
 
   return (
@@ -43,7 +44,7 @@ const AppLayout = () => {
     >
       <div className={styles.container}>
         <Header>
-          <Button type="removeButton">Remove All Posts</Button>
+          <Button type="removeButton" handleclick={deletePost} >Remove All Posts</Button>
           <SearchPosts />
           <Results />
           <Logo />

@@ -8,29 +8,30 @@ function createPosts() {
     body: faker.hacker.phrase(),
   };
 }
+// insert/search/delete/focus ,....  hook
 const usePosts = () => {
   // ref
   const inputEl = useRef(null);
   const inputBody = useRef(null);
-  // state
+  //posts state
   const [posts, setPosts] = useState(() =>
     Array.from({ length: 10 }, () => createPosts())
   );
-  //   add forms state
+  //   input form state
   const [postTitle, setPostTitle] = useState("");
   const [postBody, setPostBody] = useState("");
-  //search post
+  //input search state
   const [searchInputPost, setSearchInputPost] = useState("");
 
-  //   addToTitle
+  //   addToNewTitle  Function
   function addToTitle(e) {
     setPostTitle(e.target.value);
   }
-  //   addToPostBody
+  //   addToNewPostBody Function
   function addToPostBody(e) {
     setPostBody(e.target.value);
   }
-  // add to post function
+  // add to postList function
   function addToPost() {
     if (!postTitle) {
       inputEl.current.focus();
@@ -40,16 +41,19 @@ const usePosts = () => {
       inputBody.current.focus();
       return;
     }
-
       setPosts((posts) => [{ title: postTitle, body: postBody }, ...posts]);
       setPostTitle("");
       setPostBody("");
   }
-  // add searchquery
+  // delete all posts function
+  function deletePost(){
+    setPosts([])
+  }
+  // add searchquery to state
   function addToSearchQuery(searchtext) {
     setSearchInputPost(searchtext);
   }
-  // searchPost
+  // searchPost  result logic
   const searchedPosts =
     searchInputPost.length > 0
       ? posts.filter((post) =>
@@ -70,6 +74,7 @@ const usePosts = () => {
     postBody,
     addToSearchQuery,
     searchInputPost,
+    deletePost
   };
 };
 
